@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D | Vaše najsigurnije mjesto za prototipiranje!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    .navbar {
+  background: linear-gradient(90deg, #5b21b6, #7c3aed);
+  padding: 15px 0;
+  box-shadow: 0 4px 15px rgba(91, 33, 182, 0.3);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+  position: relative;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: white;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+.nav-links li a:hover {
+  opacity: 0.85;
+}
+
+.nav-links .active {
+  font-weight: bold;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #5b21b6;
+    width: 200px;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    display: none;
+    border-radius: 0 0 0 15px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+.footer {
+  background: linear-gradient(90deg, #5b21b6, #7c3aed);
+  color: white;
+  margin-top: 60px;
+  padding-top: 50px;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+  margin-bottom: 15px;
+}
+
+.footer-column p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+  padding-left: 5px;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+</style>
+<body>
+    <div id="nav"></div>
+    <main>
+        <section class="hero">
+        <h1>KIC 3D</h1>
+        <p>Printamo ispravno i pouzdano</p>
+            <div class="hero-buttons">
+                <button class="btn-secondary">Provjerite ponude</button>
+                <button class="btn-primary">Javite nam se direktno</button>
+            </div>
+        </section>
+
+        <section class="portfolio">
+            <h3 class="portfolio-title">Primjeri naših prijašnjih radova</h3>
+            <div class="portfolio-grid">
+                <img class="portfolio-item" src="/public/images/korpa.jpg" alt="Portfolio Item 1">
+                <img class="portfolio-item" src="/public/images/nadimak.jpg" alt="Portfolio Item 2">
+            </div>
+        </section>
+
+        <section class="services">
+
+            <h2>Što nudimo</h2>
+
+                <div class="services-grid">
+
+                <div class="service">
+                    <span class="icon">🖨️</span>
+                    <h3>3D Printanje po narudžbi</h3>
+                    <p>Izrađujemo kvalitetne 3D modele prema vašim datotekama ili idejama. Nudimo preciznu izradu koristeći moderne 3D printere i različite vrste materijala.</p>
+                </div>
+
+                <div class="service">
+                    <span class="icon">🖼️</span>
+                    <h3>3D Modeliranje</h3>
+                    <p>Nemate gotov model? Naš tim može izraditi profesionalni 3D model prema vašoj skici, slici ili ideji spreman za printanje.</p>
+                </div>
+
+                <div class="service">
+                    <span class="icon">🚀</span>
+                    <h3>Brzo Prototipiranje</h3>
+                    <p>Pomažemo poduzetnicima i inovatorima pretvoriti ideju u fizički prototip kako biste brzo testirali i razvijali svoj proizvod.</p>
+                </div>
+
+                <div class="service">
+                    <span class="icon">🔧</span>
+                    <h3>Zamjenski Dijelovi</h3>
+                    <p>Izrađujemo teško dostupne ili više neproizvedene dijelove za uređaje, kućanske aparate i razne mehaničke komponente.</p>
+                </div>
+
+                <div class="service">
+                    <span class="icon">🎁</span>
+                    <h3>Personalizirani Predmeti</h3>
+                    <p>Izrađujemo jedinstvene proizvode poput poklona, dekoracija, privjesaka, logotipa i drugih personaliziranih 3D predmeta.</p>
+                </div>
+
+                <div class="service">
+                    <span class="icon">💡</span>
+                    <h3>Savjetovanje za 3D Print</h3>
+                    <p>Pomažemo vam odabrati pravi materijal, tehnologiju i dizajn kako biste dobili najbolju kvalitetu i funkcionalnost vašeg 3D modela.</p>
+                </div>
+
+            </div>
+
+            </section>
+    </main>
+    <div id="footer"></div>
+</body>
+<script>
+fetch("/components/nav.html")
+  .then(res => res.text())
+  .then(data => document.getElementById("nav").innerHTML = data);
+
+fetch("/components/footer.html")
+  .then(res => res.text())
+  .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+
+</html>

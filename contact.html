@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt | 3D Print Studio</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f8f7ff;
+  color: #2d1b4e;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  color: #5b21b6;
+  margin-bottom: 10px;
+}
+
+header p {
+  color: #4c1d95;
+  font-size: 1.1rem;
+}
+
+.card {
+  background: white;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(91, 33, 182, 0.15);
+  margin-bottom: 40px;
+}
+
+.card h2 {
+  color: #5b21b6;
+  margin-bottom: 20px;
+}
+
+.info p {
+  margin-bottom: 10px;
+}
+
+.kontakt-forma {
+  display: flex;
+  flex-direction: column;
+}
+
+.kontakt-forma label {
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #4c1d95;
+}
+
+.kontakt-forma input,
+.kontakt-forma textarea,
+.kontakt-forma select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.kontakt-forma input:focus,
+.kontakt-forma textarea:focus,
+.kontakt-forma select:focus {
+  outline: none;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+.kontakt-forma textarea {
+  resize: vertical;
+}
+
+.kontakt-forma button {
+  margin-top: 25px;
+  padding: 14px;
+  background: #7c3aed;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.kontakt-forma button:hover {
+  background: #5b21b6;
+  transform: translateY(-2px);
+}
+
+.lokacija iframe {
+  width: 100%;
+  border-radius: 14px;
+  margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+  main {
+    margin: 30px 15px;
+  }
+}
+
+.navbar {
+  background: linear-gradient(90deg, #5b21b6, #7c3aed);
+  padding: 15px 0;
+  box-shadow: 0 4px 15px rgba(91, 33, 182, 0.3);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+  position: relative;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: white;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+.nav-links li a:hover {
+  opacity: 0.85;
+}
+
+.nav-links .active {
+  font-weight: bold;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #5b21b6;
+    width: 200px;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    display: none;
+    border-radius: 0 0 0 15px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+.footer {
+  background: linear-gradient(90deg, #5b21b6, #7c3aed);
+  color: white;
+  margin-top: 60px;
+  padding-top: 50px;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+  margin-bottom: 15px;
+}
+
+.footer-column p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+  padding-left: 5px;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="nav"></div>
+
+<main>
+
+<header>
+  <h1>Kontaktirajte nas</h1>
+  <p>Imate pitanja o 3D ispisu ili želite suradnju? Slobodno nam se javite.</p>
+</header>
+
+<div class="card info">
+  <h2>Informacije o tvrtki</h2>
+  <p><strong>Tvrtka:</strong> Kic3D</p>
+  <p><strong>Nositelj:</strong> Kristijan Vukušić</p>
+  <p><strong>Email:</strong> kvukusic@ftrr.hr</p>
+  <p><strong>Telefon:</strong> +385 99 123 4567</p>
+  <p><strong>Radno vrijeme:</strong> Od Ponedeljka do Petka 8:00 - 17:00</p>
+</div>
+
+<div class="card">
+  <h2>Pošaljite poruku</h2>
+
+  <form class="kontakt-forma">
+    <label for="ime">Ime i prezime</label>
+    <input type="text" id="ime" required>
+
+    <label for="email">Email adresa</label>
+    <input type="email" id="email" required>
+
+    <label for="telefon">Broj telefona</label>
+    <input type="tel" id="telefon">
+
+    <label for="tema">Tema upita</label>
+    <select id="tema">
+      <option>Opći upit</option>
+      <option>Suradnja</option>
+      <option>Tehnička podrška</option>
+      <option>Informacije o uslugama</option>
+    </select>
+
+    <label for="poruka">Vaša poruka</label>
+    <textarea id="poruka" rows="5" required></textarea>
+
+    <button type="submit">Pošalji poruku</button>
+  </form>
+</div>
+
+<div class="card lokacija">
+  <h2>Naša lokacija</h2>
+  <p>Vukovarska ulica 17, 34000 Požega</p>
+
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2804.6933816517153!2d17.677683876651905!3d45.33481377107215!2m3!1f0!2f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475d84c4df9fe203%3A0x21e7e030c906b5f1!2sFakultet%20turizma%20i%20ruralnog%20razvoja%20u%20Po%C5%BEegi!5e0!3m2!1shr!2shr!4v1772462919304!5m2!1shr!2shr"
+    height="400"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy">
+  </iframe>
+</div>
+
+</main>
+
+<div id="footer"></div>
+
+<script>
+fetch("/components/nav.html")
+  .then(res => res.text())
+  .then(data => document.getElementById("nav").innerHTML = data);
+
+fetch("/components/footer.html")
+  .then(res => res.text())
+  .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+
+</body>
+</html>
