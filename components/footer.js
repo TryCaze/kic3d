@@ -1,3 +1,6 @@
+export function getFooter() {
+    const footerHTML = `
+    
 <footer class="footer">
   <div class="footer-container">
 
@@ -29,3 +32,6 @@
     <p>© 2026 Kic3D. Sva prava pridržana.</p>
   </div>
 </footer>
+    `
+    document.getElementById('footer-placeholder').innerHTML = footerHTML;
+}
