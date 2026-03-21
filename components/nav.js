@@ -5,10 +5,10 @@ export function getNavbar() {
         <div class="logo">Kic 3D</div>
         <div class="menu-toggle" id="mobile-menu">☰</div>
         <ul class="nav-links">
-          <li><a href="index.html">Početna</a></li>
-          <li><a href="usluge.html">Usluge</a></li>
-          <li><a href="galerija.html">Galerija</a></li>
-          <li><a href="contact.html">Kontakt</a></li>
+          <li><a href="/index.html">Početna</a></li>
+          <li><a href="/usluge.html">Usluge</a></li>
+          <li><a href="/galerija.html">Galerija</a></li>
+          <li><a href="/contact.html">Kontakt</a></li>
         </ul>
       </div>
     </nav>`;
