@@ -15,7 +15,7 @@ export function getFooter() {
         <li><a href="/">Početna</a></li>
         <li><a href="/usluge.html">Usluge</a></li>
         <li><a href="/galerija.html">Galerija</a></li>
-        <li><a href="/contact.html">Kontakt</a></li>
+        <li><a href="/kontakt.html">Kontakt</a></li>
       </ul>
     </div>
 

@@ -8,7 +8,7 @@ export function getNavbar() {
           <li><a href="/index.html">Početna</a></li>
           <li><a href="/usluge.html">Usluge</a></li>
           <li><a href="/galerija.html">Galerija</a></li>
-          <li><a href="/contact.html">Kontakt</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
         </ul>
       </div>
     </nav>`;
