@@ -356,3 +356,63 @@ button, .btn-primary, .btn-secondary, .kontakt-forma button {
         grid-template-columns: 1fr;
     }
 }
+
+.inventory-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.inventory-category {
+  margin-bottom: 3rem;
+}
+
+.inventory-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #080d1a;
+}
+
+.product-price {
+  font-size: 1rem;
+  color: #2ecc71;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.product-stock {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.low-stock {
+  color: #e74c3c;
+  font-weight: 500;
+}
