@@ -10,6 +10,10 @@ export function getNavbar() {
           <li><a href="/galerija.html">Galerija</a></li>
           <li><a href="/trgovina.html">Trgovina</a></li>
           <li><a href="/kontakt.html">Kontakt</a></li>
+          <a href="/kosarica.html" class="cart-link">
+            🛒
+            <span id="cart-count" class="cart-badge">0</span>
+          </a>
         </ul>
       </div>
     </nav>`;

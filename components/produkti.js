@@ -1,4 +1,5 @@
 import { INVENTORY } from "../data/produkti.js";
+import { addToCart } from "../js/cart.js";
 
 export function getInventory() {
     const container = document.getElementById('inventory');
@@ -22,6 +23,9 @@ Object.entries(INVENTORY).forEach(([category, parts]) => {
         <div class="product-stock ${stockClass}">
           Stock: ${part.stock}
         </div>
+        <button onclick='addToCart(${JSON.stringify(part)})'>
+          Dodaj u košaricu
+        </button>
       </div>
     `;
   });
