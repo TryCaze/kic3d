@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Kic 3D</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <h1>Admin Nadzorna Ploča</h1>
+    <p>Dobrodošli, uprave! Ovdje možete uređivati trgovinu i usluge.</p>
+    
+    <ul>
+        <li><button>Dodaj novi proizvod</button></li>
+        <li><button>Pregled narudžbi</button></li>
+    </ul>
+
+    <script type="module">
+        import { getNavbar } from './components/nav.js';
+        import { checkAdminAccess } from './js/auth.js';
+
+        checkAdminAccess();
+
+        getNavbar();
+    </script>
+</body>
+</html>

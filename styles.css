@@ -73,6 +73,73 @@ body {
     color: var(--primary);
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-left: auto; 
+}
+
+.auth-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 20px;
+}
+
+/* Styling for Login/Signup text buttons */
+.login-btn {
+    font-size: 0.9rem;
+    color: var(--text) !important;
+}
+
+.signup-btn {
+    background: var(--primary);
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: white !important;
+    transition: var(--transition);
+}
+
+.signup-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.cart-link i, #logout-link i {
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.cart-link:hover i {
+    color: var(--primary);
+}
+
+.cart-badge {
+    top: -12px;
+    right: -12px;
+    background: var(--primary); /* Changed from red to match your theme */
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .nav-actions {
+        margin-left: 0;
+        margin-right: 40px; /* Space for the toggle menu */
+    }
+    .auth-group {
+        border: none;
+        padding: 0;
+    }
+}
+
 .menu-toggle {
     display: none;
     font-size: 1.8rem;

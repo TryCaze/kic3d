@@ -1,24 +1,54 @@
 export function getNavbar() {
+    const role = localStorage.getItem("userRole");
+    
+    const adminLink = role === "admin" 
+        ? '<li><a href="/admin.html">Admin</a></li>' 
+        : '';
+
+    const authLink = role 
+    ? `<a href="#" id="logout-link" title="Odjavi se"><i class="fas fa-sign-out-alt"></i></a>` 
+    : `<a href="/login.html" class="login-btn" title="Prijava">Prijava</a>
+       <a href="/registracija.html" class="signup-btn">Registracija</a>`;
+
     const navHTML = `
     <nav class="navbar">
-      <div class="nav-container">
+    <div class="nav-container">
         <div class="logo">Kic 3D</div>
-        <div class="menu-toggle" id="mobile-menu">☰</div>
+        <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+        
         <ul class="nav-links">
-          <li><a href="/index.html">Početna</a></li>
-          <li><a href="/usluge.html">Usluge</a></li>
-          <li><a href="/galerija.html">Galerija</a></li>
-          <li><a href="/trgovina.html">Trgovina</a></li>
-          <li><a href="/kontakt.html">Kontakt</a></li>
-          <a href="/kosarica.html" class="cart-link">
-            🛒
-            <span id="cart-count" class="cart-badge">0</span>
-          </a>
+        <li><a href="/index.html">Početna</a></li>
+        ${adminLink}
+        <li><a href="/usluge.html">Usluge</a></li>
+        <li><a href="/galerija.html">Galerija</a></li>
+        <li><a href="/trgovina.html">Trgovina</a></li>
+        <li><a href="/kontakt.html">Kontakt</a></li>
         </ul>
-      </div>
+
+        <div class="nav-actions">
+        <a href="/kosarica.html" class="cart-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count" class="cart-badge">0</span>
+        </a>
+        <div class="auth-group">
+            ${authLink}
+        </div>
+        </div>
+    </div>
     </nav>`;
     
     document.getElementById('navbar-placeholder').innerHTML = navHTML;
+
+    // 3. Attach the Logout logic if the logout link exists
+    const logoutBtn = document.getElementById('logout-link');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem("userRole");
+            window.location.href = "/index.html"; // Send back to home after logout
+        });
+    }
+
     setupMobileMenu();
     highlightActiveLink();
 }
@@ -36,7 +66,8 @@ function highlightActiveLink() {
     const currentPath = window.location.pathname;
     
     links.forEach(link => {
-        if (currentPath.includes(link.getAttribute('href'))) {
+        const href = link.getAttribute('href');
+        if (href && currentPath.includes(href)) {
             link.classList.add('active');
         }
     });

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Kic 3D</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific styles for the login layout */
+        .auth-container {
+            min-height: calc(100vh - 180px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+            margin: 0; /* Resetting card margin for flex centering */
+            text-align: center;
+        }
+
+        .auth-card h1 {
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            color: var(--text);
+        }
+
+        .auth-card form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            font-weight: 500;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .auth-card input {
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(108, 92, 231, 0.2);
+            background: var(--dark);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .auth-card input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(108, 92, 231, 0.2);
+        }
+
+        .auth-card p {
+            margin-top: 25px;
+            color: var(--text-muted);
+        }
+
+        .auth-card a {
+            color: var(--primary-hover);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-home {
+            margin-top: 15px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="auth-container">
+        <div class="card auth-card">
+            <h1><i class="fas fa-user-lock"></i> Prijava</h1>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">Email adresa</label>
+                    <input type="email" id="email" placeholder="npr. ime@email.com" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Lozinka</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn-primary">Prijavi se</button>
+
+                <p>Nemate račun? <a href="/registracija.html">Registrirajte se</a></p>
+                <a href="/index.html" class="back-home"><i class="fas fa-arrow-left"></i> Povratak na početnu</a>
+            </form>
+        </div>
+    </main>
+
+    <script type="module">
+        import { getNavbar } from './components/nav.js';
+        import { login } from './js/auth.js';
+
+        getNavbar();
+
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('password').value;
+            login(email, pass);
+        });
+    </script>
+</body>
+</html>

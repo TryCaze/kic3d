@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Pristup Odbijen - Kic 3D</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .forbidden-container {
+            min-height: calc(100vh - 180px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .forbidden-card {
+            max-width: 500px;
+            padding: 50px;
+            border-top: 4px solid #e74c3c; /* Red accent for warning */
+        }
+
+        .forbidden-icon {
+            font-size: 5rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(231, 76, 60, 0.3);
+        }
+
+        .forbidden-card h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .forbidden-card p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .error-code {
+            display: block;
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-warning {
+            display: inline-block;
+            text-decoration: none;
+            background: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-warning:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="forbidden-container">
+        <div class="card forbidden-card">
+            <div class="forbidden-icon">
+                <i class="fas fa-hand-paper"></i>
+            </div>
+            <h1>Pristup Odbijen</h1>
+            <p>Nažalost, nemate potrebne ovlasti za pregled ove stranice. Ovo područje je rezervirano isključivo za administratore.</p>
+            
+            <div class="hero-buttons">
+                <a href="/index.html" class="btn-primary">Vrati se na početnu</a>
+            </div>
+
+            <span class="error-code">Status Code: 403 Forbidden</span>
+        </div>
+    </main>
+
+    <script type="module">
+        import { getNavbar } from './components/nav.js';
+        getNavbar();
+    </script>
+</body>
+</html>

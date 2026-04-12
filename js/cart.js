@@ -13,7 +13,6 @@ export function saveCart(cart) {
 export function addToCart(product) {
     const cart = getCart();
     const existingProduct = cart.find(item => item.value === product.value);
-
     if (existingProduct) {
         existingProduct.quantity += 1;
     } else {
