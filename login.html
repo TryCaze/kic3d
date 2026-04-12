@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Specific styles for the login layout */
         .auth-container {
             min-height: calc(100vh - 180px);
             display: flex;
@@ -18,7 +17,7 @@
         .auth-card {
             width: 100%;
             max-width: 450px;
-            margin: 0; /* Resetting card margin for flex centering */
+            margin: 0;
             text-align: center;
         }
 
@@ -106,12 +105,17 @@
             </form>
         </div>
     </main>
+    <div id="footer-placeholder"></div>
 
     <script type="module">
         import { getNavbar } from './components/nav.js';
+        import { getFooter } from './components/footer.js'
         import { login } from './js/auth.js';
+        import { updateCartBadge } from './js/cart.js';
 
         getNavbar();
+        getFooter();
+        updateCartBadge();
 
         document.getElementById('login-form').addEventListener('submit', (e) => {
             e.preventDefault();

@@ -55,27 +55,50 @@ export function renderCart() {
     if (!cartContainer) return;
 
     if (cart.length === 0) {
-        cartContainer.innerHTML = "<p>Košarica je prazna!</p>";
+        cartContainer.innerHTML = "<p class='cart-empty-message'>Košarica je prazna!</p>";
         return;
     }
 
-    let html =`<h2 class="cart-title">Košarica</h2>`;
+    let html = `<h2 class="cart-title">Košarica</h2>`;
+    
+    let total = 0;
 
     cart.forEach(item => {
-            html += `
-            <div class="cart-wrapper">
-                <div>${item.label}</div>
-                <div>€${(item.price * item.quantity).toFixed(2)}</div>
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        
+        html += `
+            <div class="cart-item">
+                <div class="cart-item-name">${item.label}</div>
+                <div class="cart-item-price">€${itemTotal.toFixed(2)}</div>
                 
                 <input type="number" min="1" value="${item.quantity}" 
+                class="cart-item-quantity"
                 onchange="updateQuantity('${item.value}', this.value)" />
 
-                <button onclick="removeFromCart('${item.value}')">
-                Ukloni
+                <button class="cart-item-remove" onclick="removeFromCart('${item.value}')">
+                    <i class="fas fa-trash-alt"></i> Ukloni
                 </button>
             </div>
-            `;
+        `;
     });
+
+    html += `
+        <div class="cart-summary">
+            <div class="cart-total">
+                <span>Ukupno:</span>
+                <span class="cart-total-amount">€${total.toFixed(2)}</span>
+            </div>
+            <div class="cart-actions">
+                <button class="cart-btn cart-btn-secondary" onclick="window.location.href='/trgovina.html'">
+                    <i class="fas fa-arrow-left"></i> Nastavi kupovinu
+                </button>
+                <button class="cart-btn cart-btn-primary" onclick="alert('Checkout funkcionalnost uskoro!')">
+                    <i class="fas fa-shopping-cart"></i> Naruči
+                </button>
+            </div>
+        </div>
+    `;
 
     cartContainer.innerHTML = html;
 }
@@ -89,6 +112,14 @@ export function updateCartBadge() {
   if (!badge) return;
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
+  const oldValue = parseInt(badge.textContent) || 0;
+  
   badge.textContent = totalItems;
+  
+  if (totalItems !== oldValue) {
+    badge.classList.add('cart-badge-pop');
+    setTimeout(() => {
+      badge.classList.remove('cart-badge-pop');
+    }, 400);
+  }
 }

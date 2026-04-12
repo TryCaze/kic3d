@@ -1,8 +1,9 @@
 import { INVENTORY } from "../data/produkti.js";
-import { addToCart } from "../js/cart.js";
 
 export function getInventory() {
     const container = document.getElementById('inventory');
+    
+    if (!container) return;
 
     let html = '';
 

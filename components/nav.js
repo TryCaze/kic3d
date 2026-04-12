@@ -6,7 +6,7 @@ export function getNavbar() {
         : '';
 
     const authLink = role 
-    ? `<a href="#" id="logout-link" title="Odjavi se"><i class="fas fa-sign-out-alt"></i></a>` 
+    ? `<a id="logout-link" data-tooltip="Odjavi se" style="cursor: pointer;"><i class="fas fa-sign-out-alt"></i></a>` 
     : `<a href="/login.html" class="login-btn" title="Prijava">Prijava</a>
        <a href="/registracija.html" class="signup-btn">Registracija</a>`;
 
@@ -39,13 +39,12 @@ export function getNavbar() {
     
     document.getElementById('navbar-placeholder').innerHTML = navHTML;
 
-    // 3. Attach the Logout logic if the logout link exists
     const logoutBtn = document.getElementById('logout-link');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', (e) => {
             e.preventDefault();
             localStorage.removeItem("userRole");
-            window.location.href = "/index.html"; // Send back to home after logout
+            window.location.href = "/index.html";
         });
     }
 
