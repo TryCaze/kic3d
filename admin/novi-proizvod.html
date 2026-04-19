@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj Proizvod - Kic 3D</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/admin/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .form-container { max-width: 500px; margin: 40px auto; padding: 20px; border: 1px solid #ddd; background: #dbdbdb; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <div class="admin-wrapper">
+        <h3 class="admin-title">Dodaj novi proizvod</h3>
+        <form id="new-product-form">
+            <div class="form-group">
+                <label>Kategorija:</label>
+                <select id="prod-category" required>
+                    <option value="filament">Filament</option>
+                    <option value="nozzles">Nozzles</option>
+                    <option value="buildplates">Buildplates</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Naziv (Label):</label>
+                <input type="text" id="prod-label" placeholder="npr. PLA Red" required>
+            </div>
+            <div class="form-group">
+                <label>ID (Value):</label>
+                <input type="text" id="prod-value" placeholder="npr. pla-red" required>
+            </div>
+            <div class="form-group">
+                <label>Zaliha (Stock):</label>
+                <input type="number" id="prod-stock" value="0" required>
+            </div>
+            <div class="form-group">
+                <label>Cijena (€):</label>
+                <input type="number" step="0.01" id="prod-price" value="0" required>
+            </div>
+            <button type="submit" class="btn-admin btn-save">Spremi Proizvod</button>
+            <a href="admin.html"><button type="button" class="btn-admin btn-cancel">Odustani</button></a>
+        </form>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script type="module">
+        import { getNavbar } from '../components/nav.js';
+        import { checkAdminAccess } from '../js/auth.js';
+        import { INVENTORY } from '../data/produkti.js';
+        import { getFooter } from '../components/footer.js';
+        import { updateCartBadge } from '../js/cart.js';
+
+        checkAdminAccess();
+        getNavbar();
+        getFooter();
+        updateCartBadge();
+
+        const productForm = document.getElementById('new-product-form');
+
+        productForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const category = document.getElementById('prod-category').value;
+            const newProduct = {
+                value: document.getElementById('prod-value').value,
+                label: document.getElementById('prod-label').value,
+                stock: parseInt(document.getElementById('prod-stock').value),
+                price: parseFloat(document.getElementById('prod-price').value)
+            };
+
+            let currentInventory = JSON.parse(localStorage.getItem("kic_inventory")) || INVENTORY;
+
+            // Osiguraj da kategorija postoji prije pushanja
+            if (!currentInventory[category]) currentInventory[category] = [];
+            
+            currentInventory[category].push(newProduct);
+            localStorage.setItem("kic_inventory", JSON.stringify(currentInventory));
+
+            alert("Proizvod spremljen!");
+            productForm.reset();
+        });
+    </script>
+</body>
+</html>
