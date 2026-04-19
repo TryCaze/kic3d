@@ -27,7 +27,7 @@ export function register(email, password) {
 export function login(email, password) {
     if (email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.pass) {
         localStorage.setItem("userRole", "admin");
-        window.location.href = "/admin.html";
+        window.location.href = "/admin/admin.html";
         return;
     }
 

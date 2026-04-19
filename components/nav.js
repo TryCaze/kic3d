@@ -2,7 +2,7 @@ export function getNavbar() {
     const role = localStorage.getItem("userRole");
     
     const adminLink = role === "admin" 
-        ? '<li><a href="/admin.html">Admin</a></li>' 
+        ? '<li><a href="/admin/admin.html">Admin</a></li>' 
         : '';
 
     const authLink = role 

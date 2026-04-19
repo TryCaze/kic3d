@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Kic 3D</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        #product-form-container { margin-top: 20px; padding: 20px; border: 1px solid #ddd; display: none; background: #f9f9f9; }
+        .form-group { margin-bottom: 10px; }
+        label { display: block; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <h1>Admin Nadzorna Ploča</h1>
+    <p>Dobrodošli, uprave! Ovdje možete uređivati trgovinu i usluge.</p>
+    
+    <ul>
+        <li><button id="btn-show-form">Dodaj novi proizvod</button></li>
+        <li><button>Pregled narudžbi</button></li>
+    </ul>
+
+    <div id="product-form-container">
+        <h3>Dodaj novi proizvod u INVENTORY</h3>
+        <form id="new-product-form">
+            <div class="form-group">
+                <label>Kategorija:</label>
+                <select id="prod-category" required>
+                    <option value="filament">Filament</option>
+                    <option value="nozzles">Nozzles</option>
+                    <option value="buildplates">Buildplates</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Naziv (Label):</label>
+                <input type="text" id="prod-label" placeholder="npr. PLA Red" required>
+            </div>
+            <div class="form-group">
+                <label>ID (Value):</label>
+                <input type="text" id="prod-value" placeholder="npr. pla-red" required>
+            </div>
+            <div class="form-group">
+                <label>Zaliha (Stock):</label>
+                <input type="number" id="prod-stock" value="0" required>
+            </div>
+            <div class="form-group">
+                <label>Cijena (€):</label>
+                <input type="number" id="prod-price" value="0" required>
+            </div>
+            <button type="submit" style="background: green; color: white;">Spremi Proizvod</button>
+            <button type="button" id="btn-cancel">Odustani</button>
+        </form>
+    </div>
+
+    <script type="module">
+        import { getNavbar } from '../components/nav.js';
+        import { checkAdminAccess } from '../js/auth.js';
+        import { INVENTORY } from '../data/produkti.js';
+
+        checkAdminAccess();
+        getNavbar();
+
+        const formContainer = document.getElementById('product-form-container');
+        const productForm = document.getElementById('new-product-form');
+
+        document.getElementById('btn-show-form').addEventListener('click', () => {
+            formContainer.style.display = 'block';
+        });
+
+        document.getElementById('btn-cancel').addEventListener('click', () => {
+            formContainer.style.display = 'none';
+        });
+
+        productForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const category = document.getElementById('prod-category').value;
+            const newProduct = {
+                value: document.getElementById('prod-value').value,
+                label: document.getElementById('prod-label').value,
+                stock: parseInt(document.getElementById('prod-stock').value),
+                price: parseFloat(document.getElementById('prod-price').value)
+            };
+
+            let currentInventory = JSON.parse(localStorage.getItem("kic_inventory")) || INVENTORY;
+
+            currentInventory[category].push(newProduct);
+
+            localStorage.setItem("kic_inventory", JSON.stringify(currentInventory));
+
+            alert("Proizvod spremljen trajno u preglednik!");
+            productForm.reset();
+            formContainer.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
