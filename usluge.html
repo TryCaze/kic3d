@@ -14,8 +14,8 @@
         <h1>3D Printanje i Modeliranje</h1>
         <p>Pretvaramo vaše digitalne ideje u precizne fizičke objekte koristeći najmoderniju tehnologiju aditivne proizvodnje.</p>
         <div class="hero-buttons">
-            <button class="btn-primary">Zatraži ponudu</button>
-            <button class="btn-secondary">Pošalji 3D model</button>
+            <a href="#kontakt-forma" class="btn-primary">Zatraži ponudu</a>
+            <a href="#kontakt-forma" class="btn-secondary">Pošalji 3D model</a>
         </div>
     </header>
 
@@ -25,37 +25,37 @@
             <div class="services-grid">
                 
                 <div class="service">
-                    <div class="icon">🖨️</div>
+                    <div class="icon"><i class="fas fa-print"></i></div>
                     <h3>3D Printanje po narudžbi</h3>
                     <p>Izrađujemo kvalitetne 3D modele prema vašim datotekama ili idejama. Nudimo preciznu izradu koristeći moderne 3D printere i različite vrste materijala.</p>
                 </div>
 
                 <div class="service">
-                    <div class="icon">🖼️</div>
+                    <div class="icon"><i class="fas fa-cube"></i></div>
                     <h3>3D Modeliranje</h3>
                     <p>Nemate gotov model? Naš tim može izraditi profesionalni 3D model prema vašoj skici, slici ili ideji spreman za printanje.</p>
                 </div>
 
                 <div class="service">
-                    <div class="icon">🚀</div>
+                    <div class="icon"><i class="fas fa-rocket"></i></div>
                     <h3>Brzo Prototipiranje</h3>
                     <p>Pomažemo poduzetnicima i inovatorima pretvoriti ideju u fizički prototip kako biste brzo testirali i razvijali svoj proizvod.</p>
                 </div>
 
                 <div class="service">
-                    <div class="icon">🔧</div>
+                    <div class="icon"><i class="fas fa-tools"></i></div>
                     <h3>Zamjenski Dijelovi</h3>
                     <p>Izrađujemo teško dostupne ili više neproizvedene dijelove za uređaje, kućanske aparate i razne mehaničke komponente.</p>
                 </div>
 
                 <div class="service">
-                    <div class="icon">🎁</div>
+                    <div class="icon"><i class="fas fa-gift"></i></div>
                     <h3>Personalizirani Predmeti</h3>
                     <p>Izrađujemo jedinstvene proizvode poput poklona, dekoracija, privjesaka, logotipa i drugih personaliziranih 3D predmeta.</p>
                 </div>
 
                 <div class="service">
-                    <div class="icon">💡</div>
+                    <div class="icon"><i class="fas fa-lightbulb"></i></div>
                     <h3>Savjetovanje za 3D Print</h3>
                     <p>Pomažemo vam odabrati pravi materijal, tehnologiju i dizajn kako biste dobili najbolju kvalitetu i funkcionalnost vašeg 3D modela.</p>
                 </div>
@@ -78,27 +78,82 @@
     </section>
 
     <main class="nav-container" style="margin-top: 50px;">
-        <div class="card">
+        <div class="card" id="kontakt-forma">
             <h2>Započnite svoj 3D projekt</h2>
-            <form class="kontakt-forma">
-                <label for="ime">Ime ili Naziv tvrtke</label>
+            <form class="kontakt-forma" id="projekt-forma">
+                <label for="ime">Ime ili Naziv tvrtke *</label>
                 <input type="text" id="ime" placeholder="Vaše ime..." required>
 
-                <label for="usluga">Odaberite uslugu</label>
-                <select id="usluga">
+                <label for="email">Email adresa *</label>
+                <input type="email" id="email" placeholder="vaš@email.com" required>
+
+                <label for="telefon">Telefon / Mobitel</label>
+                <input type="tel" id="telefon" placeholder="+385 ...">
+
+                <label for="usluga">Odaberite uslugu *</label>
+                <select id="usluga" required>
+                    <option value="">Odaberite uslugu</option>
                     <option value="printanje">3D Printanje</option>
                     <option value="modeliranje">3D Modeliranje</option>
                     <option value="prototip">Prototipiranje</option>
                     <option value="dijelovi">Zamjenski dijelovi</option>
+                    <option value="personalizirani">Personalizirani predmeti</option>
+                    <option value="savjetovanje">Savjetovanje</option>
                 </select>
 
-                <label for="poruka">Opis projekta (dimenzije, materijal, namjena)</label>
-                <textarea id="poruka" rows="5" placeholder="Opišite što želite izraditi..."></textarea>
+                <label for="materijal">Željeni materijal</label>
+                <select id="materijal">
+                    <option value="">Odaberite materijal</option>
+                    <option value="pla">PLA (osnovni, ekološki)</option>
+                    <option value="abs">ABS (čvrsti, otporan na toplinu)</option>
+                    <option value="petg">PETG (izdržljiv, otporan na vremenske uvjete)</option>
+                    <option value="tpu">TPU (fleksibilan, gumeni)</option>
+                    <option value="resin">Smola (visoka preciznost)</option>
+                    <option value="nije-bitno">Nije bitno - preporučite vi</option>
+                </select>
 
-                <button type="submit">Zatraži besplatnu procjenu</button>
+                <label for="dimenzije">Dimenzije (dužina x širina x visina u mm)</label>
+                <input type="text" id="dimenzije" placeholder="npr. 120 x 80 x 50 mm">
+
+                <label for="kolicina">Željena količina</label>
+                <input type="number" id="kolicina" min="1" value="1" placeholder="Broj komada">
+
+                <label for="rok">Rok izrade</label>
+                <select id="rok">
+                    <option value="standard">Standardno (5-7 dana)</option>
+                    <option value="brzo">Brzo (2-3 dana)</option>
+                    <option value="ekspres">Ekspresno (24 sata)</option>
+                    <option value="nije-bitno">Nije bitno</option>
+                </select>
+
+                <label for="poruka">Opis projekta (dimenzije, materijal, namjena) *</label>
+                <textarea id="poruka" rows="5" placeholder="Opišite što želite izraditi. Navedite boju, posebne zahtjeve, tolerancije i sl." required></textarea>
+
+                <label for="datoteka">Prenesite 3D model (STL, OBJ, 3MF, STEP)</label>
+                <input type="file" id="datoteka" accept=".stl,.obj,.3mf,.step,.stp">
+
+                <label for="referenca">Referentna slika / skica (opcionalno)</label>
+                <input type="file" id="referenca" accept="image/*,.pdf">
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="uvjeti" required>
+                    <label for="uvjeti">Slažem se s <a href="/uvjeti.html">uvjetima korištenja</a> i potvrđujem da su podaci točni *</label>
+                </div>
+
+                <button type="submit">Pošalji upit i zatraži procjenu</button>
             </form>
         </div>
     </main>
     <div id="footer-placeholder"></div>
+
+    <script>
+        document.getElementById('projekt-forma').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            this.reset();
+            
+            window.location.href = '/usluga-potvrda.html';
+        });
+    </script>
 </body>
 </html>

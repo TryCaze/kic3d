@@ -1,13 +1,30 @@
-const CART_KEY = "cart";
+const CART_KEY_PREFIX = "cart_";
+
+// Helper to get the current user's email (or a unique identifier)
+function getCurrentUserEmail() {
+    const role = localStorage.getItem("userRole");
+    // For guests or if no user is logged in, use a default guest cart
+    if (!role) return "guest";
+    
+    // For registered users, we need to store their email when they log in
+    return localStorage.getItem("userEmail") || "guest";
+}
+
+// Get the cart key for the current user
+function getUserCartKey() {
+    return CART_KEY_PREFIX + getCurrentUserEmail();
+}
 
 // main logic
 
 export function getCart() {
-    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    const key = getUserCartKey();
+    return JSON.parse(localStorage.getItem(key)) || [];
 }
 
 export function saveCart(cart) {
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    const key = getUserCartKey();
+    localStorage.setItem(key, JSON.stringify(cart));
 }
 
 export function addToCart(product) {
@@ -93,9 +110,9 @@ export function renderCart() {
                 <button class="cart-btn cart-btn-secondary" onclick="window.location.href='/trgovina.html'">
                     <i class="fas fa-arrow-left"></i> Nastavi kupovinu
                 </button>
-                <button class="cart-btn cart-btn-primary" onclick="alert('Checkout funkcionalnost uskoro!')">
+                <a href="checkout.html" class="cart-btn cart-btn-primary">
                     <i class="fas fa-shopping-cart"></i> Naruči
-                </button>
+                </a>
             </div>
         </div>
     `;

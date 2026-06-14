@@ -1,3 +1,5 @@
+import { logout } from "../js/auth.js";
+
 export function getNavbar() {
     const role = localStorage.getItem("userRole");
     
@@ -43,8 +45,7 @@ export function getNavbar() {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            localStorage.removeItem("userRole");
-            window.location.href = "/index.html";
+            logout();
         });
     }
 

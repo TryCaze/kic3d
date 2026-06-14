@@ -27,6 +27,7 @@ export function register(email, password) {
 export function login(email, password) {
     if (email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.pass) {
         localStorage.setItem("userRole", "admin");
+        localStorage.setItem("userEmail", email);
         window.location.href = "/admin/admin.html";
         return;
     }
@@ -36,8 +37,15 @@ export function login(email, password) {
 
     if (user) {
         localStorage.setItem("userRole", "user");
+        localStorage.setItem("userEmail", email);
         window.location.href = "/index.html";
     } else {
         alert("Pogrešni podaci!");
     }
+}
+
+export function logout() {
+    localStorage.removeItem("userRole");
+    localStorage.removeItem("userEmail");
+    window.location.href = "/index.html";
 }

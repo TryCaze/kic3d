@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hvala vam! - KIC 3D</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="js/main.js"></script>
+    <style>
+        .confirmation-wrapper {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .confirmation-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 50px 40px;
+            border: 1px solid rgba(108, 92, 231, 0.2);
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            color: #2ecc71;
+            margin-bottom: 20px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .confirmation-card h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .confirmation-card p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .message-box {
+            background: rgba(108, 92, 231, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .message-box i {
+            color: var(--primary-hover);
+            margin-right: 10px;
+        }
+
+        .message-box p {
+            margin-bottom: 10px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-custom {
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary-custom {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--primary);
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary-custom:hover {
+            background: rgba(108, 92, 231, 0.1);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .confirmation-card {
+                padding: 30px 25px;
+            }
+            
+            .confirmation-card h1 {
+                font-size: 1.5rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn-primary-custom,
+            .btn-secondary-custom {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="confirmation-wrapper">
+        <div class="confirmation-card">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <h1>Hvala vam!</h1>
+            <p>Vaš upit je uspješno poslan.</p>
+            
+            <div class="message-box">
+                <p><i class="fas fa-envelope"></i> Poslali smo potvrdu na vašu email adresu.</p>
+                <p><i class="fas fa-clock"></i> Naš tim će vam odgovoriti u roku 24 sata.</p>
+                <p><i class="fas fa-phone"></i> Za hitne upite, slobodno nas nazovite.</p>
+            </div>
+            
+            <div class="button-group">
+                <a href="/index.html" class="btn-primary-custom">
+                    <i class="fas fa-home"></i> Povratak na početnu
+                </a>
+                <a href="/usluge.html" class="btn-secondary-custom">
+                    <i class="fas fa-cogs"></i> Pregledaj usluge
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+</body>
+</html>

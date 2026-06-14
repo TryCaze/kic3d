@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potvrda narudžbe - Kic 3D</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .confirmation-wrapper {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .confirmation-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(108, 92, 231, 0.2);
+            text-align: center;
+        }
+        
+        .success-icon {
+            font-size: 5rem;
+            color: #2ecc71;
+            margin-bottom: 20px;
+            animation: scaleIn 0.5s ease;
+        }
+        
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .confirmation-card h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        
+        .order-number {
+            font-size: 1.2rem;
+            color: var(--primary-hover);
+            margin-bottom: 30px;
+            padding: 10px;
+            background: rgba(108, 92, 231, 0.1);
+            display: inline-block;
+            border-radius: 10px;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+        
+        .order-details {
+            text-align: left;
+            margin: 30px 0;
+            padding: 25px;
+            background: var(--dark);
+            border-radius: 15px;
+            border: 1px solid rgba(108, 92, 231, 0.1);
+        }
+        
+        .order-details h3 {
+            color: var(--primary-hover);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(108, 92, 231, 0.2);
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .info-label {
+            width: 140px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+        
+        .info-value {
+            flex: 1;
+            color: var(--text);
+        }
+        
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .items-table th,
+        .items-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .items-table th {
+            color: var(--primary-hover);
+            font-weight: 600;
+        }
+        
+        .items-table td {
+            color: var(--text);
+        }
+        
+        .items-table .text-right {
+            text-align: right;
+        }
+        
+        .total-row {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid rgba(108, 92, 231, 0.3);
+            font-size: 1.2rem;
+        }
+        
+        .total-row .grand-total {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-hover);
+        }
+        
+        .next-steps {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 4px solid #2ecc71;
+            text-align: left;
+        }
+        
+        .next-steps h4 {
+            color: #2ecc71;
+            margin-bottom: 15px;
+        }
+        
+        .next-steps ul {
+            margin-left: 20px;
+            color: var(--text-muted);
+        }
+        
+        .next-steps li {
+            margin-bottom: 8px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-continue {
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-continue:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        
+        .btn-orders {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--primary);
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-orders:hover {
+            background: rgba(108, 92, 231, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .payment-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .payment-card { background: rgba(52, 152, 219, 0.2); color: #3498db; }
+        .payment-paypal { background: rgba(0, 124, 172, 0.2); color: #007cac; }
+        .payment-pouzece { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+        
+        @media (max-width: 768px) {
+            .confirmation-card {
+                padding: 25px;
+            }
+            
+            .info-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .info-row {
+                flex-direction: column;
+            }
+            
+            .items-table th,
+            .items-table td {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="confirmation-wrapper">
+        <div class="confirmation-card" id="confirmation-content">
+            <!-- Dinamički sadržaj se učitava JavaScriptom -->
+            <div style="text-align: center; padding: 50px;">
+                <i class="fas fa-spinner fa-pulse fa-2x"></i>
+                <p>Učitavanje podataka narudžbe...</p>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script type="module">
+        import { getNavbar } from './components/nav.js';
+        import { getFooter } from './components/footer.js';
+        import { updateCartBadge } from './js/cart.js';
+
+        getNavbar();
+        getFooter();
+        updateCartBadge();
+
+        function getPaymentBadgeClass(method) {
+            switch(method) {
+                case 'kartica': return 'payment-card';
+                case 'paypal': return 'payment-paypal';
+                case 'pouzece': return 'payment-pouzece';
+                default: return 'payment-card';
+            }
+        }
+
+        function getPaymentMethodText(method) {
+            switch(method) {
+                case 'kartica': return 'Kreditna / Debitna kartica';
+                case 'paypal': return 'PayPal';
+                case 'pouzece': return 'Plaćanje pouzećem';
+                default: return method;
+            }
+        }
+
+        function renderConfirmation() {
+            const container = document.getElementById('confirmation-content');
+            const orderData = sessionStorage.getItem('lastOrder');
+            
+            if (!orderData) {
+                container.innerHTML = `
+                    <div style="text-align: center;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #f39c12;"></i>
+                        <h1>Nema podataka o narudžbi</h1>
+                        <p>Nismo pronašli informacije o vašoj narudžbi.</p>
+                        <div class="button-group">
+                            <a href="/trgovina.html" class="btn-continue"><i class="fas fa-store"></i> Nastavi kupovinu</a>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            const order = JSON.parse(orderData);
+            
+            // Formatiranje datuma
+            const orderDate = new Date(order.orderDate);
+            const formattedDate = orderDate.toLocaleDateString('hr-HR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            // Generiranje tablice sa stavkama
+            let itemsHtml = '';
+            order.items.forEach(item => {
+                itemsHtml += `
+                    <tr>
+                        <td>${escapeHtml(item.name)}</td>
+                        <td class="text-right">${item.quantity} kom</td>
+                        <td class="text-right">€${item.price.toFixed(2)}</td>
+                        <td class="text-right">€${item.total.toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+            
+            const paymentBadgeClass = getPaymentBadgeClass(order.paymentMethod);
+            const paymentMethodText = getPaymentMethodText(order.paymentMethod);
+            
+            container.innerHTML = `
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                
+                <h1>Hvala na narudžbi!</h1>
+                <p>Vaša narudžba je uspješno zaprimljena.</p>
+                
+                <div class="order-number">
+                    <i class="fas fa-hashtag"></i> Broj narudžbe: ${order.orderNumber}
+                </div>
+                
+                <div class="order-details">
+                    <h3><i class="fas fa-receipt"></i> Detalji narudžbe</h3>
+                    
+                    <div class="info-row">
+                        <div class="info-label">Datum narudžbe:</div>
+                        <div class="info-value">${formattedDate}</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Status narudžbe:</div>
+                        <div class="info-value"><span style="color: #f39c12;">● Na čekanju</span></div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Način plaćanja:</div>
+                        <div class="info-value"><span class="payment-badge ${paymentBadgeClass}">${paymentMethodText}</span></div>
+                    </div>
+                    
+                    <h3 style="margin-top: 25px;"><i class="fas fa-user"></i> Podaci za dostavu</h3>
+                    
+                    <div class="info-row">
+                        <div class="info-label">Ime i prezime:</div>
+                        <div class="info-value">${escapeHtml(order.customer.fullname)}</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Email:</div>
+                        <div class="info-value">${escapeHtml(order.customer.email)}</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Telefon:</div>
+                        <div class="info-value">${escapeHtml(order.customer.phone)}</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Adresa:</div>
+                        <div class="info-value">${escapeHtml(order.customer.address)}, ${escapeHtml(order.customer.city)} (${escapeHtml(order.customer.zip)})</div>
+                    </div>
+                    ${order.customer.notes ? `
+                    <div class="info-row">
+                        <div class="info-label">Napomena:</div>
+                        <div class="info-value">${escapeHtml(order.customer.notes)}</div>
+                    </div>
+                    ` : ''}
+                    
+                    <h3 style="margin-top: 25px;"><i class="fas fa-box"></i> Stavke narudžbe</h3>
+                    
+                    <table class="items-table">
+                        <thead>
+                            <tr>
+                                <th>Proizvod</th>
+                                <th class="text-right">Količina</th>
+                                <th class="text-right">Cijena/kom</th>
+                                <th class="text-right">Ukupno</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${itemsHtml}
+                        </tbody>
+                    </table>
+                    
+                    <div class="total-row">
+                        <div class="info-row">
+                            <div class="info-label">Međuzbroj:</div>
+                            <div class="info-value text-right">€${order.subtotal.toFixed(2)}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Dostava:</div>
+                            <div class="info-value text-right">${order.shippingCost === 0 ? 'BESPLATNO' : '€' + order.shippingCost.toFixed(2)}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label grand-total">Ukupno za platiti:</div>
+                            <div class="info-value text-right grand-total">€${order.totalAmount.toFixed(2)}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="next-steps">
+                    <h4><i class="fas fa-clock"></i> Što slijedi?</h4>
+                    <ul>
+                        <li>Primit ćete potvrdu narudžbe na email adresu: <strong>${escapeHtml(order.customer.email)}</strong></li>
+                        <li>Naš tim će obraditi vašu narudžbu u roku 24 sata</li>
+                        <li>O statusu narudžbe bit ćete obaviješteni putem emaila</li>
+                        <li>Za sva pitanja, slobodno nas kontaktirajte na <strong>kvukusic@ftrr.hr</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="button-group">
+                    <a href="/trgovina.html" class="btn-continue"><i class="fas fa-store"></i> Nastavi kupovinu</a>
+                    <a href="/index.html" class="btn-orders"><i class="fas fa-home"></i> Povratak na početnu</a>
+                </div>
+            `;
+        }
+        
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+        
+        renderConfirmation();
+    </script>
+</body>
+</html>
